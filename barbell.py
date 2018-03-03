@@ -30,23 +30,36 @@ def get_weights(target_weight=55):
             find another denomination 
         
     '''
+def get_weights(target_weight=55):
     weights = [45, 30, 20, 10, 5]
     bar = 45
     results = '1 bar\n'
-    if target_weight <= bar:
-        return '{}? Do you even lift?'.format(target_weight)
+    if target_weight < bar:
+        return '{}? Do you even lift bro?'.format(target_weight)
     else:
-        target_weight = int(target_weight % bar)
-        print(target_weight)
+        target_weight = int(target_weight - bar)
         while(target_weight != 0):
-            left = target_weight / 2
+            left = int(target_weight / 2)
             in_weights = left in weights
             if in_weights:
                 results += '2 {}lb weights\n'.format(left)
                 target_weight = int(target_weight % left)
-                print('a-----', target_weight)
             else:
-              return results
+              if target_weight > weights[0]*2:
+                weight = target_weight % weights[0]
+                amount = int(target_weight/weights[0])
+                results += '{} {}lb weights\n'.format(amount, weights[0])
+                target_weight = weight
+              elif(target_weight >= weights[1]):
+                weight = target_weight % weights[2]
+                results += '{} {}lb weights\n'.format(2, weights[3])
+                target_weight = weight
+              elif(target_weight >= weights[2]):
+                weight = target_weight % weights[2]
+                results += '{} {}lb weights\n'.format(2, weights[4])
+                target_weight = weight
+              else:
+                return 'not balanced'
     return results
 
 '''

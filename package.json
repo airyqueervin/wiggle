@@ -1,5 +1,5 @@
 {
-  "name": "carousel-project",
+  "name": "wiggle",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,25 +11,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/amelia-brown/carousel-project.git"
+    "url": "git+https://github.com/airyqueervin/wiggle.git"
   },
   "author": "Airyque Ervin",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/amelia-brown/carousel-project/issues"
+    "url": "https://github.com/airyqueervin/wiggle/issues"
   },
-  "homepage": "https://github.com/amelia-brown/carousel-project#readme",
+  "homepage": "https://github.com/airyqueervin/wiggle#readme",
   "dependencies": {
-    "axios": "^0.17.1",
-    "body-parser": "^1.18.2",
-    "cors": "^2.8.4",
-    "diskdb": "^0.1.17",
     "express": "^4.16.2",
-    "node-fetch": "^2.0.0",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-maskedinput": "^4.0.1",
     "webpack": "^3.11.0"
   },
   "devDependencies": {

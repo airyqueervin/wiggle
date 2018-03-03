@@ -8,27 +8,43 @@ class App extends Component {
     super(props);
     this.state = {
       valid: false,
-      number: ''
+      number: '',
+      raw: '',
+      mask: '(XXX) XXX-XXXX',
+      clicked: false
     }
   }
 
   validator = (value) => {
-    console.log(value.len)
     if (value.length === 10) {
-      console.log('in here')
-      let numFirst = '(' + value.substring(0, 3) + ') ' + value.substring(3, 6) + '-' + value.substring(6)
-      this.setState({valid: true, number: numFirst})
+      let maskedNum = ''
+      let mask = this.state.mask;
+      let i = 0;
+      for (let char of mask) {
+        if (char === 'X') {
+          maskedNum += value[i]
+          i++
+        } else {
+          maskedNum += char
+        }
+      }
+      this.setState({valid: true, number: maskedNum, raw: value})
     } else {
       this.setState({valid: false})
     }
   }
 
+  showLastInput = () => {
+    this.setState({clicked: !this.state.clicked})
+  }
+
   render() {
     return (
       <div>
-        <MaskedInput mask="(XXX) XXX-XXXX" validator={this.validator} />
-        {this.state.valid ? null : <p>Invalid</p>}
-        <p>{this.state.number}</p>
+        <MaskedInput mask={this.state.mask} validator={this.validator} />
+        {this.state.valid ?   <p>{this.state.number}</p> : <p>Invalid</p>}
+        <button onClick={this.showLastInput}>Get Last Input</button>
+        {this.state.clicked ? <p>Raw: {this.state.raw} <br/> Masked: {this.state.number}</p> : null}
       </div>
     )
   }
